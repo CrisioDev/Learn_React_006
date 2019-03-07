@@ -29,9 +29,9 @@ class App extends Component {
   }
 
   //rarely used - sooner or later will be removed
-  componentWillMount(){
-    console.log('[App.js] componentWillMount')
-  }
+  // componentWillMount(){
+  //   console.log('[App.js] componentWillMount')
+  // }
 
   deletePersonHandler = (personIndex) => {
     //const persons = this.state.persons.slice(); //slice to create a copy of state
