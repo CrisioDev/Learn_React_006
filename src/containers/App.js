@@ -7,7 +7,7 @@ import Cockpit from '../components/Cockpit/Cockpit'
 class App extends Component {
   state  = {
     persons: [
-      {id:'170364', name: 'Christopher',age:'28'},
+      {id:'170364', name: 'Christopher',age:'23'},
       {id:'918471', name: 'Gina',age:'25'},
       {id:'871642', name: 'Calvin',age:'20'}
     ],
@@ -55,6 +55,7 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Cockpit
+          title={this.props.appTitle}
           showPersons = {this.state.showPersons}
           togglePersonsHandler = {this.togglePersonsHandler}
           persons = {this.state.persons}
