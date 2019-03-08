@@ -11,7 +11,7 @@ class Person extends Component {
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.changed} value={this.props.name}/>
             </React.Fragment>
-        ); //wrapping Aux allows to get multiple JSX-Elements in return without div wrapping 
+        ); //wrapping Aux or React.Fragment allows to get multiple JSX-Elements in return without div wrapping 
     }
 };
 
