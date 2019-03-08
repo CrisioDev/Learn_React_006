@@ -1,19 +1,21 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person'
 
-class Persons extends Component{
+class Persons extends PureComponent{
     // Warning without use
     // getDerivedStateFromProps(props, state){
     //     console.log('[Persons.js] getDerivedStateFromProps');
     //     return state;
     // }
 
-    shouldComponentUpdate(nextProps, nextState){
-        console.log('[Persons.js] shouldComponentUpdate');
-        //Only when props.persons changed then should Update
-        //on Cockpit removal no update will be done => time and resources saved  
-        return (nextProps.persons !== this.props.persons);
-    }
+    // shouldComponentUpdate(nextProps, nextState){
+    //     console.log('[Persons.js] shouldComponentUpdate');
+    //     //Only when props.persons changed then should Update
+    //     //on Cockpit removal no update will be done => time and resources saved  
+    //     return (nextProps.persons !== this.props.persons);
+    // }
+
+    //PureComponent removes that necessarity of shouldComponentUpdate and checks if any props changed and only then updates
 
     getSnapshotBeforeUpdate(prevProps, prevState){
         console.log('[Persons.js] getSnapshotBeforeUpdate');
