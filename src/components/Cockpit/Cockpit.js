@@ -10,15 +10,15 @@ const cockpit = (props) => {
   //   }, 1000);
   // }, []); //only happens initially with []
 
-  useEffect(() => { // could be used more than once
-    console.log("[Cockpit.js] useEffect - Hook | I will run every render cycle");
-    setTimeout(()=>{
-      alert('Possible Http-Request done!');
-    }, 1000);
-    return () => {
-      console.log('[Cockpit.js] cleanup work in useEffect');
-    }//only happens on removal
-  }, []);
+  // useEffect(() => { // could be used more than once
+  //   console.log("[Cockpit.js] useEffect - Hook | I will run every render cycle");
+  //   setTimeout(()=>{
+  //     alert('Possible Http-Request done!');
+  //   }, 1000);
+  //   return () => {
+  //     console.log('[Cockpit.js] cleanup work in useEffect');
+  //   }//only happens on removal
+  // }, []);
 
   const assignedClasses =[];
   let btnClass = '';
