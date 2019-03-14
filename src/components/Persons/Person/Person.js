@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Aux from '../../../hoc/Aux'; //import higher order component
-import withClass from '../../../hoc/WithClass'; //import WithClass as HOC
+import withClass from '../../../hoc/withClass'; //import WithClass as HOC
 import styles from './Person.css';
 
 class Person extends Component {

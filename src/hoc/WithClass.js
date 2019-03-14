@@ -1,4 +1,6 @@
 import React from 'react'
+//withClass is not a Component anymore so we set the name to lowercase to differ
+
 
 const withClass = (WrappedComponent, className) => {
     return props => (
