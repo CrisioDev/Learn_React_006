@@ -14,12 +14,13 @@ class App extends Component {
 
   state  = {
     persons: [
-      {id:'170364', name: 'Christopher',age:'23'},
-      {id:'918471', name: 'Gina',age:'25'},
-      {id:'871642', name: 'Calvin',age:'20'}
+      {id:'170364', name: 'Christopher',age: 23},
+      {id:'918471', name: 'Gina',age: 25},
+      {id:'871642', name: 'Calvin',age: 20}
     ],
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changecounter : 0
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -39,6 +40,7 @@ class App extends Component {
   componentDidUpdate(){
     console.log('[App.js] componentDidUpdate');
   }
+
   //rarely used - sooner or later will be removed
   // componentWillMount(){
   //   console.log('[App.js] componentWillMount')
@@ -63,7 +65,14 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({ persons: persons});
+    this.setState((prevState, props) => {
+      //USE THIS WAY WHEN DEPENDING ON PREVIOUS STATES!!
+      //OTHERWISE IT MAY BE NOT THE MOST CURRENT STATE
+      return {
+        persons: persons, 
+        changecounter: prevState.changecounter+1
+      }; 
+    });
   }
 
   togglePersonsHandler = () => {
