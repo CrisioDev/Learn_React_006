@@ -3,16 +3,27 @@ import PropTypes from 'prop-types';
 import Aux from '../../../hoc/Aux'; //import higher order component
 import withClass from '../../../hoc/withClass'; //import WithClass as HOC
 import styles from './Person.css';
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
+    constructor(){
+        super();
+        this.inputElementRef = React.createRef();
+    }
+
+    static contextType = AuthContext; //React connects Context behind the scenes with these syntax this.context for access
+
     componentDidMount(){
-        this.inputElement.focus();
+        //this.inputElement.focus();
+        this.inputElementRef.current.focus();
+        console.log("[PersonJS] Auth:" + this.context.authenticated);
     }
 
     render(){
         console.log('[Person.js rendering...]');
         return (
-            <Aux> 
+            <Aux>
+                {this.context.authenticated ? <p>Authenticated</p> : <p>Please login</p>}
                 <p onClick={this.props.click}>
                     #{this.props.name} and I am {this.props.age} years old!
                 </p>
@@ -21,7 +32,8 @@ class Person extends Component {
                 </p>
                 <input 
                     type="text"
-                    ref={(inputEl) => {this.inputElement = inputEl}} 
+                    //ref={(inputEl) => {this.inputElement = inputEl}} //both works with componentDidMount
+                    ref={this.inputElementRef}
                     onChange={this.props.changed} 
                     value={this.props.name}
                 />

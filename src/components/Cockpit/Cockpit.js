@@ -1,14 +1,23 @@
-import React , { useEffect } from 'react';
+import React , { useEffect, useRef, useContext } from 'react';
 import classes from './Cockpit.css';
+import AuthContext from '../../context/auth-context';
 
 const cockpit = (props) => {
-  // useEffect replaces all Lifecycle Methods from Components differentianting from syntax
-  // useEffect(() => {
-  //   console.log("[Cockpit.js] useEffect - Hook | I will run every render cycle");
-  //   setTimeout(()=>{
-  //     alert('Possible Http-Request done!');
-  //   }, 1000);
-  // }, []); //only happens initially with []
+    const toggleButtonRef = useRef(null); //Access JSX-Element on DOM
+    const authContext = useContext(AuthContext); //Global variable Access
+
+  //useEffect replaces all Lifecycle Methods from Components differentianting from syntax
+  //useEffect runs after every renderCycle an can access on screen Data
+  useEffect(() => {
+    console.log("[Cockpit.js] useEffect - Hook | I will run every render cycle");
+    // setTimeout(()=>{
+    //   alert('Possible Http-Request done!');
+    // }, 1000);
+    toggleButtonRef.current.click();
+    return() => {
+      console.log("Button Clicked!");
+    };
+  }, []); //only happens initially with []
 
   // useEffect(() => { // could be used more than once
   //   console.log("[Cockpit.js] useEffect - Hook | I will run every render cycle");
@@ -39,11 +48,14 @@ const cockpit = (props) => {
           <h1>{props.title}</h1>
           <p className={assignedClasses.join(' ')}>Crazy JSX Stuff is goin' on!</p>
           <button
-              className={btnClass}
-              onClick={props.togglePersonsHandler}>
-              Toggle Persons</button> 
+            ref={toggleButtonRef}
+            className={btnClass}
+            onClick={props.togglePersonsHandler}>
+            Toggle Persons
+          </button>
+            <button onClick={authContext.login}>Login</button>
       </div>
-  );
+  ); 
 };
 
 //React.memo only Updates when props changes like should ComponentUpdate
