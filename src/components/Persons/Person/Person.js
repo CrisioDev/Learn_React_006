@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import Aux from '../../../hoc/Aux' //import higher order component
+import Aux from '../../../hoc/Aux'; //import higher order component
+import withClass from '../../../hoc/WithClass'; //import WithClass as HOC
 import styles from './Person.css';
 
 class Person extends Component {
     render(){
         console.log('[Person.js rendering...]');
         return (
-            <React.Fragment> 
+            <Aux> 
                 <p onClick={this.props.click}>#{this.props.name} and I am {this.props.age} years old!</p>
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.changed} value={this.props.name}/>
-            </React.Fragment>
+            </Aux>
         ); //wrapping Aux or React.Fragment allows to get multiple JSX-Elements in return without div wrapping 
     }
 };
 
-export default Person;
+export default withClass(Person, styles.Person);
